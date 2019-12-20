@@ -89,7 +89,7 @@ const updateContent = (doc: vscode.TextDocument, context: vscode.ExtensionContex
 
 
             panel.webview.html = previewHtml 
-                .replace(/{{\s+(\w+)\s+}}/g, (str, key) => {
+                .replace(/{{\s*(\w+)\s*}}/g, (str, key) => {
                     switch (key) {
                         case 'content':
                             return html;
