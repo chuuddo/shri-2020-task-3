@@ -23,7 +23,8 @@ let conf: ExampleConfiguration | undefined = undefined;
 conn.onInitialize((params: InitializeParams) => {
     return {
         capabilities: {
-            textDocumentSync: 'always'
+            // TODO Возможно нужно другое значение или оно должно браться из каких-то настроек.
+            textDocumentSync: 1
         }
     };
 });
