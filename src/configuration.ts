@@ -1,13 +1,13 @@
 export enum RuleKeys {
-    UppercaseNamesIsForbidden = 'uppercaseNamesIsForbidden',
-    BlockNameIsRequired = 'blockNameIsRequired',
+    UppercaseNamesIsForbidden = "uppercaseNamesIsForbidden",
+    BlockNameIsRequired = "blockNameIsRequired"
 }
 
 export enum Severity {
-    Error = "Error", 
-    Warning = "Warning", 
-    Information = "Information", 
-    Hint = "Hint", 
+    Error = "Error",
+    Warning = "Warning",
+    Information = "Information",
+    Hint = "Hint",
     None = "None"
 }
 
@@ -17,8 +17,6 @@ export interface SeverityConfiguration {
 }
 
 export interface ExampleConfiguration {
- 
     enable: boolean;
- 
     severity: SeverityConfiguration;
 }

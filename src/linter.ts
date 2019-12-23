@@ -8,25 +8,24 @@ export interface LinterProblem<TKey> {
 }
 
 export function makeLint<TProblemKey>(
-    json: string, 
+    json: string,
     validateProperty: (property: jsonToAst.AstProperty) => LinterProblem<TProblemKey>[],
     validateObject: (property: jsonToAst.AstObject) => LinterProblem<TProblemKey>[]
 ): LinterProblem<TProblemKey>[] {
-
     function walk(
-        node: jsonToAst.AstJsonEntity, 
+        node: jsonToAst.AstJsonEntity,
         cbProp: (property: jsonToAst.AstProperty) => void,
         cbObj: (property: jsonToAst.AstObject) => void
-    ) {
+    ): void {
         switch (node.type) {
-            case 'Array':
+            case "Array":
                 node.children.forEach((item: jsonToAst.AstJsonEntity) => {
                     walk(item, cbProp, cbObj);
                 });
                 break;
-            case 'Object':
+            case "Object":
                 cbObj(node);
-    
+
                 node.children.forEach((property: jsonToAst.AstProperty) => {
                     cbProp(property);
                     walk(property.value, cbProp, cbObj);
@@ -35,7 +34,7 @@ export function makeLint<TProblemKey>(
         }
     }
 
-    function parseJson(json: string):JsonAST  {
+    function parseJson(json: string): JsonAST {
         try {
             return jsonToAst(json);
         } catch (error) {
@@ -47,9 +46,11 @@ export function makeLint<TProblemKey>(
     const ast: JsonAST = parseJson(json);
 
     if (ast) {
-        walk(ast, 
-            (property: jsonToAst.AstProperty) => errors.push(...validateProperty(property)), 
-            (obj: jsonToAst.AstObject) => errors.push(...validateObject(obj)));
+        walk(
+            ast,
+            (property: jsonToAst.AstProperty) => errors.push(...validateProperty(property)),
+            (obj: jsonToAst.AstObject) => errors.push(...validateObject(obj))
+        );
     }
 
     return errors;

@@ -84,21 +84,25 @@
 		"compile": "tsc -p ./",
 		"watch": "tsc -watch -p ./",
 		"postinstall": "node ./node_modules/vscode/bin/install",
-		"test": "npm run compile && node ./node_modules/vscode/bin/test"
+		"test": "npm run compile && node ./node_modules/vscode/bin/test",
+		"lint": "eslint src/**/*.ts",
+		"lint:fix": "eslint src/**/*.ts --fix"
 	},
 	"devDependencies": {
-		"@types/mocha": "^2.2.42",
 		"@types/node": "^10.12.21",
-		"tslint": "^5.12.1",
+		"@typescript-eslint/eslint-plugin": "^2.12.0",
+		"@typescript-eslint/parser": "^2.12.0",
+		"eslint": "^6.8.0",
+		"eslint-config-prettier": "^6.7.0",
+		"eslint-plugin-prettier": "^3.1.1",
+		"prettier": "^1.19.1",
 		"typescript": "^3.4.5"
 	},
 	"dependencies": {
 		"bem-xjst": "^8.9.6",
 		"json-to-ast": "^2.1.0",
-		"request-light": "^0.2.4",
 		"vscode": "^1.1.36",
 		"vscode-languageclient": "^5.2.1",
-		"vscode-languageserver": "^5.2.1",
-		"vscode-nls": "^4.1.1"
+		"vscode-languageserver": "^5.2.1"
 	}
 }

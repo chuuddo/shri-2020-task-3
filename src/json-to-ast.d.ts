@@ -5,41 +5,39 @@ declare namespace JsonToAst {
         offset: number;
     }
 
-
-
     export interface AstLocation {
         start: AstPosition;
         end: AstPosition;
     }
 
     export interface AstLiteral {
-        type: 'Literal';
+        type: "Literal";
         value: string | number | boolean | null;
         raw: string;
         loc: AstLocation;
     }
 
     export interface AstArray {
-        type: 'Array';
+        type: "Array";
         children: Array<AstJsonEntity>;
         loc: AstLocation;
     }
 
     export interface AstObject {
-        type: 'Object';
+        type: "Object";
         children: AstProperty[];
         loc: AstLocation;
     }
 
     export interface AstProperty {
-        type: 'Property';
+        type: "Property";
         key: AstIdentifier;
         value: AstJsonEntity;
         loc: AstLocation;
     }
 
     export interface AstIdentifier {
-        type: 'Identifier';
+        type: "Identifier";
         value: string;
         raw: string;
         loc: AstLocation;
