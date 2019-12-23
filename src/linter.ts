@@ -35,7 +35,13 @@ export function makeLint<TProblemKey>(
         }
     }
 
-    function parseJson(json: string):JsonAST  {return jsonToAst(json); }
+    function parseJson(json: string):JsonAST  {
+        try {
+            return jsonToAst(json);
+        } catch (error) {
+            return undefined;
+        }
+    }
 
     const errors: LinterProblem<TProblemKey>[] = [];
     const ast: JsonAST = parseJson(json);
