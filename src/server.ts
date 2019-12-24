@@ -18,8 +18,7 @@ let conf: ExampleConfiguration | undefined = undefined;
 conn.onInitialize(() => {
     return {
         capabilities: {
-            // TODO Возможно нужно другое значение или оно должно браться из каких-то настроек.
-            textDocumentSync: 1
+            textDocumentSync: docs.syncKind
         }
     };
 });
